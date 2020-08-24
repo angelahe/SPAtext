@@ -2,8 +2,15 @@
 single page app step by step
 
 ## next actions
+clean up the URL by giving the app its own domain name
+map the domain name to the S3 bucket
+do this by creating a CNAME entry with your DNS provider that uses the endpoint URL as the value for the record (see appendix 2 off text)
 
+create a test environment
+
+IAM lockdown - add fine grained policies
 ## further reading
+### intro
 http://learnjs.benrady.com
 learn to code html and css by shay howe
 http://learn.shayhowe.com/html-css/
@@ -12,6 +19,18 @@ http://eloquentjavascript.net/
 apps and examples from the book here:
 https://pragprog.com/book/brapps/serverless-page-apps
 https://github.com/benrady/learnjs
+
+### ch 1
+https://en.wikipedia.org/wiki/CAP_theorem
+https://sdk.amazonaws.com/builder/js
+https://www.npmjs.com/package/grunt-livereload
+http://getskeleton.com
+http://getskeleton.com/examples/landing/
+http://console.aws.amazon.com
+
+### ch 2 routing views with hash events
+jasmine doc (21)
+
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
@@ -77,6 +96,7 @@ aws s3 ls
 now has learnjs.dream2do.ca
 aws sts get-caller-identity
 account 040939238419:user/avhenders
+
 ultimate solution: had to make my permissions on my bucket public (vs the private default when creating the bucket)
 
 
@@ -122,6 +142,22 @@ Serverless design
   - different security model - can't mix application validation with security validation
   - different identity model - e.g. join to user table with id not apply anymore
   - big scale costs
+
+### ch 2
+  tests - to trigger events, inspect markup
+  event loop - invokes callbacks
+  javascript - modify markup, make requests
+  html - read values
+
+  http://learnjs.dream2do.ca.s3-website.us-east-2.amazonaws.com/tests/index.html
+  (at beginning, no tests found)
+  can have user browse to /tests and copy/paste the error they are experiencing in the tests
+
+  1. create view container in the markup to give the router a place to add the views
+  2. create the showView function and have it create a minimal version of the problem view
+  3. create a namespace where the router function can live
+
+  
 
 ## approach and purpose
 -  build a single page web app, moving logic normally found in the server down into a web client built with javascript, html, css
