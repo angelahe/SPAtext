@@ -1,4 +1,3 @@
-
 ## Change Log
 
 ### Beta 3 Changes

@@ -6,4 +6,5 @@ master
 dist
 
 # original src
-learnjs/*
+learnjs/*.*
+learnjs
