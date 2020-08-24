@@ -51,6 +51,8 @@ your first and most important challenge is to figure out what the market wants t
 
 build a product and try to sell it - validate the demand and your ability to connect with those customers via a sales or marketing channel - asap
 
+landing page - quickly explain what the app is and provides a clear path to get started with it (often with button - the call to action)
+
 in N-Tier design - application server does most of the heavy lifting
   - storing user data 
   - issue security creds
