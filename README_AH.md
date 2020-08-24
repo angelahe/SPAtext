@@ -45,6 +45,40 @@ start a local development server that serves the content of the public directory
 ./sspa server
 ```
 
+## to deploy
+(rather than our own Apache or Nginx web server)
+Amazon's Simple Storage Service (S3)
+
+### set up the AWS command-line interface (AWS CLI)
+```
+pip install awscli
+
+```
+create AWS user with access keys my
+
+IAM - identity and access managementd
+  use this to create individual users who have access to the services under your account
+  have to sign up for the S3 service (create a bucket) from services/s3
+  learnjs.dream2do.ca (could not do from command line)
+  endpoint(I think) is http://learnjs.dream2do.ca.s3-website-us-east-2.amazonaws.com
+  
+```
+./sspa deploy_bucket learnjs.dream2do.ca
+```
+debug error
+https://aws.amazon.com/premiumsupport/knowledge-center/s3-access-denied-error-kms/
+add permission to the kms:GenerateDataKey action - 
+go back to setup since I couldn't create the bucket from the command line
+
+https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html
+https://docs.aws.amazon.com/AmazonS3/latest/gsg/PuttingAnObjectInABucket.html
+aws configure (do again)
+aws s3 ls
+now has learnjs.dream2do.ca
+aws sts get-caller-identity
+account 040939238419:user/avhenders
+ultimate solution: had to make my permissions on my bucket public (vs the private default when creating the bucket)
+
 
 ## notes and quotes
 your first and most important challenge is to figure out what the market wants to buy and what it's willing to pay.  product/market fit, is key to building a successful product or service
@@ -52,6 +86,8 @@ your first and most important challenge is to figure out what the market wants t
 build a product and try to sell it - validate the demand and your ability to connect with those customers via a sales or marketing channel - asap
 
 landing page - quickly explain what the app is and provides a clear path to get started with it (often with button - the call to action)
+
+until your application is in the hands of your users, from their perspective, you havne't really done anything, no matter how much code you've written
 
 in N-Tier design - application server does most of the heavy lifting
   - storing user data 
