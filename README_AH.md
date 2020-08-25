@@ -177,6 +177,12 @@ document.querySelector('.view-container').appendChild(element)
 
 in console can do $('.view-container)
 
+adding view parameters - split hash into 2 parts, name and a parameter
+(could be other kinds of identifiers, like primary db keys, UUIDs, crypto hashes, raw data as plain text or encoded e.g. json)
+
+create spies - to test the interactions between 2 pieces of code
+  is a test double that stand in for real objects or functions
+  
 
 ## approach and purpose
 -  build a single page web app, moving logic normally found in the server down into a web client built with javascript, html, css
