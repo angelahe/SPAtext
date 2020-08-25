@@ -157,10 +157,23 @@ Serverless design
   2. create the showView function and have it create a minimal version of the problem view
   3. create a namespace where the router function can live
 
-  
+markup goes nowhere - create view container
+SpecHelper.js - copies markup in app in an element with the markup class, then appends it to the body of the test runner's page, making it available to all our tests.
+also need to add view-container class to the <div> with the skeleton container class on it
 
 ## approach and purpose
 -  build a single page web app, moving logic normally found in the server down into a web client built with javascript, html, css
 -  use Amazon web services to build a serverless back end
   (replaces servers, dbs, and load balancers of traditional web app with cloud services)
+
+## issues encountered
+
+### ch 1
+
+### ch 2
+DevTools failed to load SourceMap: Could not load content for chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/js/content.js.map: HTTP error: status code 404, net::ERR_UNKNOWN_URL_SCHEME
+
+DevTools failed to load SourceMap: Could not load content for chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/js/intercom-link-expand-loader.js.map: HTTP error: status code 404, net::ERR_UNKNOWN_URL_SCHEME
+
+Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/. jquery-2.1.4.js
 
