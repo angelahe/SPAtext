@@ -158,8 +158,25 @@ Serverless design
   3. create a namespace where the router function can live
 
 markup goes nowhere - create view container
+to have tests access the markup in the app 
 SpecHelper.js - copies markup in app in an element with the markup class, then appends it to the body of the test runner's page, making it available to all our tests.
 also need to add view-container class to the <div> with the skeleton container class on it
+
+debugging via console:
+document.querySelector('.view-container')
+var element = document.querySelector('.view-container')
+element.__proto__
+$('.view-container').empty()
+$('.view-container').append(problemView)
+$('.view-container').append('<h1>Angela</h1><p>is learning</p>'))
+
+is equivalent to 
+var element = document.createElement("h1")
+element.innerText = "Angela"
+document.querySelector('.view-container').appendChild(element)
+
+in console can do $('.view-container)
+
 
 ## approach and purpose
 -  build a single page web app, moving logic normally found in the server down into a web client built with javascript, html, css
