@@ -182,7 +182,11 @@ adding view parameters - split hash into 2 parts, name and a parameter
 
 create spies - to test the interactions between 2 pieces of code
   is a test double that stand in for real objects or functions
-  
+
+handling parameters in view functions
+make tests FIRE-y
+fast, informative, reliable and exhaustive
+so if introduce a bug it causes exactly one test to fail
 
 ## approach and purpose
 -  build a single page web app, moving logic normally found in the server down into a web client built with javascript, html, css
