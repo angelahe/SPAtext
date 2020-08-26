@@ -1,7 +1,13 @@
 # SPAtext
 single page app step by step
 
-## next actions
+## next to do:
+  jasmine in browser is behaving unexpectedly, not loading latest tests.
+  do a nodejs install so can run from command line
+  
+
+## next actions after course
+
 clean up the URL by giving the app its own domain name
 map the domain name to the S3 bucket
 do this by creating a CNAME entry with your DNS provider that uses the endpoint URL as the value for the record (see appendix 2 off text)
@@ -215,6 +221,9 @@ could put it in a script in the page, but the browser might run it as soon as it
 to avoid this, attach a listener that is notified once the page is ready
 add script tag to end of page and attach listener using jquery's .ready() function
 and use the DOMContentLoaded event
+
+respond to hash events - add a listener for the hashchange event using jquery trigger event
+  to trigger, load the app then spy on the showView function, then call trigger and pass in the name of the even we want to trigger ie hashchange
 
 ## approach and purpose
 -  build a single page web app, moving logic normally found in the server down into a web client built with javascript, html, css

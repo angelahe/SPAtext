@@ -28,4 +28,18 @@ describe('LearnJS', function(){
     expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash);
   });
 
+  it('subscribes to the hash change event', function() {
+    learnjs.appOnReady();
+    spyOn(learnjs, 'showView');
+    $(window).trigger('hashchange');
+    expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash);
+  });
+
+  it('subscribes ot the hash change event', function() {
+    learnjs.appOnReady();
+    spyOn(learnjs, 'showView');
+    $(window).trigger('hashchange'); 
+    expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash);
+  });
+
 });
