@@ -115,6 +115,54 @@ Uploading - Think of uploading as just opposite of downloading. While uploading 
 
 World Wide Web Consortium (W3C) - An organization consisting of representatives from member companies and responsible for making rules for the World Wide Web.
 
+## css terms
+https://www.impressivewebs.com/css-terms-definitions/
+
+http://nimbupani.com/css-vocabulary.html
+Property: The style that you are applying to a selector, e.g. border.
+Value: The value that the property can have, e.g. 1px.
+Keyword: A word that is defined within the CSS specs and hence must never appear within quotes when used. E.g. red, solid, dotted.
+Length Units:Values can be declared in units (e.g., 1px, 2%). This summarizes major units you should be concerned with.
+
+Functional Notation: Any value that is specified as a function (an identifier followed by ()). Mainly used to denote colors, URIs, attributes, and transforms: e.g. rgba(0, 0, 0, 0.5), url('im.png'), attr('href'), scale(20). Here are some more details on functional notation.
+Declaration: The set of property names and values like so:
+
+background: red;
+Declaration Block: A set of declarations within {}, e.g.
+
+{
+clear: both;
+color: sky; 
+}
+
+Rule or Rule Set: Selector(s) followed by a declaration block. E.g.
+
+#lovelyweather {
+clear: both;
+color: skyblue;
+}  
+This demo shows what each part of a ruleset means. Hover on each of the terms to see what they mean.
+
+Selector The way you declare which elements the styles should apply to. #lovelyweather in the above example is a selector. There are different kinds of selectors:
+
+Class: The most commonly used selector. E.g. “.cloudy” to select an element with classname cloudy (e.g. ’
+’ There can be more than 1 element with the same classname.
+ID: Use this sparingly. You cannot reuse an ID within the same page and used only to identify an element uniquely. E.g. <div id=lovelyweather></div>
+Attribute Selector: If you use any attribute other than class or id to identify an element in a stylesheet, you would be using Attribute Selectors. You can also do basic pattern matching within an attribute selector (so if you would like to do basic pattern matching for selectors using class or ID attributes, you would want to use attribute selectors).
+Pseudo-Classes: Classes that are applied to elements based on information that is not present in the markup, e.g. :first-child or :last-child. Do note that the selectors are parsed from right to left (see the demo). You cannot use section article:first-child to select the first occurrence of article, if the first child of section is h1 and not article. Likewise with the :nth-child, and :last-child pseudo-classes.
+Pseudo-Elements Pseudo-elements differ from Pseudo-Classes in that they actually create an element in the document tree. This is almost the first instance of CSS modifying the HTML document tree. You should ideally use pseudo-elements with “::” instead of “:” (but most browsers accept “:” notation for CSS 2.1 pseudo-elements). Pseudo-elements are: ::first-line, ::first-letter, ::before, ::after (See the demo for how pseudo-elements work).
+Combinators: The selection of an element based on its occurrence in relation to another element (chosen by the choice of combinator: whitespace, >, +, or ~). You can have:
+
+Descendant Combinator: This is the most common usage, e.g. #lovelyweather h1.
+Child Combinator: Select an element if it is a direct child of another element (and not a grandchild of that element).
+Adjacent Sibling Combinator: The element that is immediately adjacent to another element.
+General Sibling Combinator: The element that is adjacent, but not immediately to another element.
+See demo for all these combinators.
+
+At-Rules: Rules that begin with the @ character, e.g. @import, @page, @media, and @font-face.
+Media Features: With media queries, you can target the styles depending on the feature of that particular medium. A popular use of a media feature is the min-width and max-width to detect iOS devices.
+Vendor-specific Extension: Exactly what it states. They provide functionality specific to that particular vendor (i.e. the browser). They do not always necessarily represent a feature declared in a standard. Peter Beverloo maintains an exhaustive list of vendor-prefixed CSS properties by browser. See this demo for how vendor-specific extensions work.
+
 ## concepts
 elements - designators that define the structure and content of objects within a page
   h1, p, a, div, span, strong, em

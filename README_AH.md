@@ -64,6 +64,11 @@ start a local development server that serves the content of the public directory
 ./sspa server
 ```
 
+## to run tests
+
+http://localhost:9292/tests/index.html#
+
+
 ## to deploy
 (rather than our own Apache or Nginx web server)
 Amazon's Simple Storage Service (S3)
@@ -188,6 +193,29 @@ make tests FIRE-y
 fast, informative, reliable and exhaustive
 so if introduce a bug it causes exactly one test to fail
 
+loading the applicaaitn
+  when enter URL the browser fetches the file and downloads it
+  if it's html - browser will download other assets specified in the markup
+    e.g. css, javascript, fonts, images, videos
+
+test coverage:
+  don't assume a particular implementation
+  favor testability over encapsulation
+  assume someone else knows how to test it. how would you discover their approach
+  write tests for untested code before you'll change it
+  when all else fails, isolate untested code from testable code
+
+loading process for single page app - you're not done
+  event listeners to be added
+  data structures to initialize
+  other assets to fetch
+
+could put it in a script in the page, but the browser might run it as soon as it can, even before the browser has created the html hierarchy
+
+to avoid this, attach a listener that is notified once the page is ready
+add script tag to end of page and attach listener using jquery's .ready() function
+and use the DOMContentLoaded event
+
 ## approach and purpose
 -  build a single page web app, moving logic normally found in the server down into a web client built with javascript, html, css
 -  use Amazon web services to build a serverless back end
@@ -204,3 +232,6 @@ DevTools failed to load SourceMap: Could not load content for chrome-extension:/
 
 Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/. jquery-2.1.4.js
 
+title includes problem # test - does not pass as written, even though it returns the matching string
+
+invokes router when loaded - does not pass, does not even run
