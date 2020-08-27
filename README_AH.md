@@ -4,7 +4,14 @@ single page app step by step
 ## next to do:
   jasmine in browser is behaving unexpectedly, not loading latest tests.
   do a nodejs install so can run from command line
-  
+https://jasmine.github.io/setup/nodejs.html
+
+  npm init
+  sudo npm install --save-dev jasmine
+  npx jasmine init // creates spec directory and config json for me
+  customize spec/support/jasmine.json to enumerate source files and spec files you want Jasmine runner to include
+  //run tests
+  npx jasmine //from root of project
 
 ## next actions after course
 

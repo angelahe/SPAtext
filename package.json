@@ -1,0 +1,29 @@
+{
+  "name": "spatext",
+  "version": "1.0.0",
+  "description": "build a single page app and deploy to the cloud",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelahe/SPAtext.git"
+  },
+  "keywords": [
+    "tdd",
+    "aws",
+    "jasmine",
+    "js",
+    "jquery"
+  ],
+  "author": "Angela Henders",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelahe/SPAtext/issues"
+  },
+  "homepage": "https://github.com/angelahe/SPAtext#readme",
+  "devDependencies": {
+    "jasmine": "^3.6.1"
+  }
+}
