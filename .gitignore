@@ -8,3 +8,5 @@ dist
 # original src
 learnjs/*.*
 learnjs
+
+node_modules/*

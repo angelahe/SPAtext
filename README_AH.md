@@ -13,6 +13,8 @@ https://jasmine.github.io/setup/nodejs.html
   //run tests
   npx jasmine //from root of project
 
+  
+
 ## next actions after course
 
 clean up the URL by giving the app its own domain name
@@ -32,6 +34,8 @@ http://eloquentjavascript.net/
 apps and examples from the book here:
 https://pragprog.com/book/brapps/serverless-page-apps
 https://github.com/benrady/learnjs
+https://www.freecodecamp.org/news/jasmine-unit-testing-tutorial-4e757c2cbf42/
+ (for python) - pip install jasmine
 
 ### ch 1
 https://en.wikipedia.org/wiki/CAP_theorem
@@ -49,7 +53,8 @@ jasmine doc (21)
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
   or livereloadX, livereload app, live-server or grunt-livereload (node)
-
+  https://github.com/MikeRogers0/LivePage (load unpacked extension in browser), forked from repo
+  
 ## concepts used here
 TDD - Red Green Refactor
 no yak shaving
