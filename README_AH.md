@@ -36,6 +36,23 @@ https://pragprog.com/book/brapps/serverless-page-apps
 https://github.com/benrady/learnjs
 https://www.freecodecamp.org/news/jasmine-unit-testing-tutorial-4e757c2cbf42/
  (for python) - pip install jasmine
+http://jasmine.github.io
+  see a list of matchers (with expect)
+jasmine-jquery extension (html specific matchers like toExist, to HaveClass)
+https://github.com/velesin/jasmine-jquery
+other test doubles
+http://xunitpatterns.com/Test%20Double.html
+routing libraries
+Director - https://github.com/flatiron/director
+Page - https://visionmedia.github.io/page.js
+javascript test alternatives
+qunit - http://qunitjs.com/
+sinon.js - http://sinonjs.org/
+vows.js - http://vowsjs.org/ (async test framework)
+hash change events - further reading (including getting old has value in event callback)  and can manipulate browser history using pushState and popState methods of window.history
+https://developer.mozilla.org/en-US/docs/Web/API/Window/location
+https://developer.mozilla.org/en-US/docs/Web/API/WindowEventhandlers/onhashchange
+
 
 ### ch 1
 https://en.wikipedia.org/wiki/CAP_theorem
@@ -47,14 +64,30 @@ http://console.aws.amazon.com
 
 ### ch 2 routing views with hash events
 jasmine doc (21)
+to trigger the event - load app then spy on the showView function
+then can assert that the spy was invoked with the right arguments
 
+in app, register our listenerby assigning a function to the onhashchange property on the window object (browser API provides this property)
+the function will be invoked whenever the hash changes
 
+### chapter 3 essentials of single page apps
+extract the markup for the problem view to an html template
+  flexible, easily testable and require no special libraries or tools
+  easier than building the markup programmatically using jQuery
+  once we've created a template, we'll add a title element
+
+  templates will live inside the 'templates' div
+  use jQuery's clone() function to make a copy
+  update the text for teh title element
+  now hide the templates div from the user (with a little css)
+  add a rule for .templates to display:none
+  
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
   or livereloadX, livereload app, live-server or grunt-livereload (node)
   https://github.com/MikeRogers0/LivePage (load unpacked extension in browser), forked from repo
-  
+
 ## concepts used here
 TDD - Red Green Refactor
 no yak shaving
