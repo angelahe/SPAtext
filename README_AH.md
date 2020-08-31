@@ -13,8 +13,6 @@ https://jasmine.github.io/setup/nodejs.html
   //run tests
   npx jasmine //from root of project
 
-  
-
 ## next actions after course
 
 clean up the URL by giving the app its own domain name
@@ -81,7 +79,18 @@ extract the markup for the problem view to an html template
   update the text for teh title element
   now hide the templates div from the user (with a little css)
   add a rule for .templates to display:none
-  
+
+using templates to manage markup, keeps app flixible and dynamic enough to show any content
+using jQuery makes it easy to clone, change, append the templates without having to use a templating library
+
+add description of the problem, teh problem code, and a place for the users to provide an answer
+
+data will come from a data model
+
+use low object mapping impedance (avoid map back and forth to underlying datastore)
+if we mix data and behavior on the objects in the model, we'll have to separate them out again when we go serialize them to/from the db
+instead will use more direct mapping from model objects to the db and not use object model
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
@@ -91,6 +100,9 @@ extract the markup for the problem view to an html template
 ## concepts used here
 TDD - Red Green Refactor
 no yak shaving
+functional programming
+aws
+
 
 ## environment and libraries used
 Normalize CSS - ensures base style is the same across all browsers

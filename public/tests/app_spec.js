@@ -14,13 +14,6 @@ describe('LearnJS', function(){
     learnjs.showView('#problem-42');
     expect(learnjs.problemView).toHaveBeenCalledWith('42');
   });
-  
-  describe('problem view', function() {
-    it('has a title that includes the problem number', function() {
-      var view = learnjs.problemView('1');
-      expect(view.text()).toEqual('Problem #1 Coming Soon!');
-    });
-  });
 
   it('invokes the router when loaded', function(){
     spyOn(learnjs, 'showView');
@@ -35,6 +28,16 @@ describe('LearnJS', function(){
     expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash);
   });
 
-  
+  describe('problem view', function() {
+    var view;
+    beforeEach(function() {
+      view = learnjs.problemView('1');
+    });
+
+    it('has a title that includes the problem number', function() {
+      var view = learnjs.problemView('1');
+      expect(view.text()).toEqual('Problem #1 Coming Soon!');
+    });
+  });
 
 });

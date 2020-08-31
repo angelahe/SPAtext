@@ -10,3 +10,5 @@ learnjs/*.*
 learnjs
 
 node_modules/*
+code/*
+*.zip
