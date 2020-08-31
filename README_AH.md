@@ -91,6 +91,11 @@ use low object mapping impedance (avoid map back and forth to underlying datasto
 if we mix data and behavior on the objects in the model, we'll have to separate them out again when we go serialize them to/from the db
 instead will use more direct mapping from model objects to the db and not use object model
 
+use data binding
+  one way data binding - data inserted into markup automatically (for readonly)
+  two-way data binding - insert into markup and then read back out to model, 
+    ie when an event is triggered that signals the data was changed
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
