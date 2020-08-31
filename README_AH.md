@@ -95,7 +95,8 @@ use data binding
   one way data binding - data inserted into markup automatically (for readonly)
   two-way data binding - insert into markup and then read back out to model, 
     ie when an event is triggered that signals the data was changed
-
+  in markup - add data attributes to the elements in the view to specify what properties should be bound to those elements
+  then write function that apply the properties of the javascript object to an element.
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
