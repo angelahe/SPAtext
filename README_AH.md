@@ -99,7 +99,10 @@ use data binding
   then write function that apply the properties of the javascript object to an element.
 
   click handler using jquery (don't want to reload the page and reset the state of the app)
-  
+
+use jQuery Effects API
+  fadeOut
+  fadeIn
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
