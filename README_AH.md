@@ -97,6 +97,10 @@ use data binding
     ie when an event is triggered that signals the data was changed
   in markup - add data attributes to the elements in the view to specify what properties should be bound to those elements
   then write function that apply the properties of the javascript object to an element.
+
+  click handler using jquery (don't want to reload the page and reset the state of the app)
+  
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
