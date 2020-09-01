@@ -32,7 +32,7 @@ learnjs.problemView = function(data) {
   }
 
   function checkAnswerClick() {
-    if (checkAnwer()) {
+    if (checkAnswer()) {
       resultFlash.text('Correct');
     } else {
       resultFlash.text('Incorrect');
