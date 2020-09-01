@@ -26,6 +26,10 @@ learnjs.flashElement = function(elem, content) {
   });
 }
 
+learnjs.template = function(name) {
+  return $('.templates .' + name).clone();
+}
+
 learnjs.problemView = function(data) {
   var problemNumber = parseInt(data, 10);
   var view = $('.templates .problem-view').clone();
