@@ -38,6 +38,12 @@ describe('LearnJS', function(){
     expect(elem.fadeIn).toHaveBeenCalled();
   });
 
+  it('can redirect to the main view after the last problem is answered', function() {
+    var flash = learnjs.buildCorrectFlash(2);
+    expect(flash.find('a').attr('href')).toEqual("");
+    expect(flash.find('a').text()).toEqual("You're Finished!");
+  });
+
   describe('problem view', function() {
     var view;
     beforeEach(function() {
@@ -61,13 +67,26 @@ describe('LearnJS', function(){
 
       beforeEach(function() {
         spyOn(learnjs, 'flashElement');
-        resultFlash = view.find('result');
+        resultFlash = view.find('.result');
       });
 
-      it('can check a correct answer by hitting a button', function() {
-        view.find('.answer').val('true');
-        view.find('.check-btn').click();
-        expect(learnjs.flashElement).toHaveBeenCalledWith(resultFlash, 'Correct!');
+      describe('when the answer is correct', function() {
+        beforeEach(function() {
+          view.find('.answer').val('true');
+          view.find('.check-btn').click();
+        });
+
+        it('flashes the result', function() {
+          var flashArgs = learnjs.flashElement.calls.argsFor(0);
+          expect(flashArgs[0]).toEqual(resultFlash);
+          expect(flashArgs[1].find('span').text()).toEqual('Correct!');
+        });
+
+        it('shows a link to the next problem', function() {
+          var link = learnjs.flashElement.calls.argsFor(0)[1].find('a');
+          expect(link.text()).toEqual('Next Problem');
+          expect(link.attr('href')).toEqual('#problem-2');
+        });
       });
   
       it('rejects an incorrect answer', function() {

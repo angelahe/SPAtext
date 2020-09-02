@@ -107,6 +107,10 @@ use jQuery Effects API
   fadeOut
   fadeIn
 
+take you to landing page when you are out of problems to solve by extracting function to test the end condition directly
+
+create a shell - the visible markup outside the templates and view container, visible in every view, eg navigation bars, logos, sidebars, menus for app, parent for fixed position elements available in any view
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
