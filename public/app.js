@@ -46,9 +46,9 @@ learnjs.problemView = function(data) {
     if (checkAnswer()) {
       var correctFlash = learnjs.template('correct-flash');
       correctFlash.find('a').attr('href', '#problem-' + (problemNumber + 1));
-      learnjs.flashElement(resultFlash, 'Correct');
+      learnjs.flashElement(resultFlash, 'Correct!');
     } else {
-      learnjs.flashElement(resultFlash, 'Incorrect');
+      learnjs.flashElement(resultFlash, 'Incorrect!');
     }
     return false;
   }
