@@ -22,6 +22,9 @@ do this by creating a CNAME entry with your DNS provider that uses the endpoint 
 create a test environment
 
 IAM lockdown - add fine grained policies
+
+redirect users to help links depending on the question (do in click handler)
+  using window.location.hash or checkAnswerClick handler
 ## further reading
 ### intro
 http://learnjs.benrady.com
