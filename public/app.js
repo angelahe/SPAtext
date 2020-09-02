@@ -30,6 +30,18 @@ learnjs.template = function(name) {
   return $('.templates .' + name).clone();
 }
 
+learnjs.buildCorrectFlash = function(problemNum) {
+  var correctFlash = learnjs.template('correct-flash');
+  var link = correctFlash.find('a');
+  if (problemNum < learnjs.problems.length) {
+    link.attr('href', '#problem-' + (problemNum + 1));
+  } else {
+    link.attr('href', '');
+    link.text("You're Finished!");
+  }
+  return correctFlash;
+}
+
 learnjs.problemView = function(data) {
   var problemNumber = parseInt(data, 10);
   var view = $('.templates .problem-view').clone();
