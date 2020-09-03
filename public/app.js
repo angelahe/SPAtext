@@ -2,10 +2,6 @@
 
 var learnjs = {};
 
-learnjs.landingView = function() {
-  return learnjs.template('landing-view');
-}
-
 learnjs.problems = [
   {
     description: "What is truth?",
@@ -16,6 +12,10 @@ learnjs.problems = [
     code: "function problem() { return 42 === 6 * ___;}"
   }
 ];
+
+learnjs.template = function(name) {
+  return $('.templates .' + name).clone();
+}
 
 learnjs.applyObject = function(obj, elem){
   for(var key in obj) {
@@ -30,9 +30,7 @@ learnjs.flashElement = function(elem, content) {
   });
 }
 
-learnjs.template = function(name) {
-  return $('.templates .' + name).clone();
-}
+
 
 learnjs.buildCorrectFlash = function(problemNum) {
   var correctFlash = learnjs.template('correct-flash');
@@ -48,7 +46,7 @@ learnjs.buildCorrectFlash = function(problemNum) {
 
 learnjs.problemView = function(data) {
   var problemNumber = parseInt(data, 10);
-  var view = $('.templates .problem-view').clone();
+  var view = learnjs.template('problem-view');
   var problemData = learnjs.problems[problemNumber -1];
   var resultFlash = view.find('.result');
 
@@ -60,8 +58,7 @@ learnjs.problemView = function(data) {
 
   function checkAnswerClick() {
     if (checkAnswer()) {
-      var correctFlash = learnjs.template('correct-flash');
-      correctFlash.find('a').attr('href', '#problem-' + (problemNumber + 1));
+      var flashContent = learnjs.buildCorrectFlash(problemNumber);
       learnjs.flashElement(resultFlash, 'Correct!');
     } else {
       learnjs.flashElement(resultFlash, 'Incorrect!');
@@ -76,6 +73,10 @@ learnjs.problemView = function(data) {
   
   return view;
   
+}
+
+learnjs.landingView = function() {
+  return learnjs.template('landing-view');
 }
 
 learnjs.showView = function(hash) {
@@ -93,6 +94,6 @@ learnjs.showView = function(hash) {
 learnjs.appOnReady = function() {
   window.onhashchange = function() {
     learnjs.showView(window.location.hash);
-  }
+  };
   learnjs.showView(window.location.hash);
 }
