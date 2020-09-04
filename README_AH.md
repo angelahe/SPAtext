@@ -115,7 +115,16 @@ custom events to send messages to our views
   have view register event listener so i can trigger behavior without breaking encapsulation
 
   remove the view before moving on to the next one
-  
+  use jQuery's empty function cleans up associated data and event handlers (ie don't have to worry about cleaning up the cleanup function)
+
+  https://www.w3.org/standards/webdesign/accessibility
+  http://itstiredinhere.com/accessibility
+
+  links to web apps as home screen buttons
+  ios:
+  https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
+
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
@@ -173,6 +182,9 @@ IAM - identity and access managementd
   have to sign up for the S3 service (create a bucket) from services/s3
   learnjs.dream2do.ca (could not do from command line)
   endpoint(I think) is http://learnjs.dream2do.ca.s3-website-us-east-2.amazonaws.com
+
+ http://learnjs.dream2do.ca.s3-website.us-east-2.amazonaws.com/
+ 
   
 ```
 ./sspa deploy_bucket learnjs.dream2do.ca
