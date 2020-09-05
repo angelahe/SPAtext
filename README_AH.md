@@ -124,6 +124,54 @@ custom events to send messages to our views
   ios:
   https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
 
+  https://developer.chrome.com/multidevice/android/installtohomescreen
+
+  css animations
+
+  form validation - validate.js and parse.ly
+
+  https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attirbutes
+
+  https://api.jquery.com/data/#data-html5
+
+  http://underscorejs.org
+
+  http://ramdajs.com
+
+ https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data
+
+ http://api.jquery.com/category/effects 
+
+ https://developer.mozilla.org/en-US/docs/Web/CSS/animation
+
+## ch 4 identity as a service with amazon cognito
+treat identity management as another web service to separate concerns
+use identities from a variety of identity providers (google, facebook, our own app) and link them with a single identity record provided by Cognito
+auth becomes a concern of the infrastructure rather than the app
+vs store users in a db, and salt and hash passwords
+avoid the security concerns inherent in managing others' passwords
+will create an identity pool to act as a repository for user identities
+connect app with 3rd party identity providers
+then create profiles that let our app directly access any amazon web service from the browser,
+then store user data in a db
+
+based on the oauth2 standard
+oauth2 has some serious problems
+
+google+ sign-in
+create and configure a google project in the google developers console (google api console)
+
+steps:
+1. open google developers console and login using your google account
+2. click create project button
+3. give project a name
+4. open the project detail page and select enable and manage apis under use google apis in dashboard
+5. find google+ api and enable it
+6. select credentials in left sidebar
+7. click tab that says oauth consent screen and fill out form
+will be presented to users when they are asked to connect to your app with google (only need a product name)
+8. click add credentials button and select oauth 2.0 client id
+9. select web application as app type and click create
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
@@ -184,8 +232,8 @@ IAM - identity and access managementd
   endpoint(I think) is http://learnjs.dream2do.ca.s3-website-us-east-2.amazonaws.com
 
  http://learnjs.dream2do.ca.s3-website.us-east-2.amazonaws.com/
- 
-  
+
+
 ```
 ./sspa deploy_bucket learnjs.dream2do.ca
 ```
