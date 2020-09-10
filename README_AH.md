@@ -173,6 +173,8 @@ will be presented to users when they are asked to connect to your app with googl
 8. click add credentials button and select oauth 2.0 client id
 9. select web application as app type and click create
 
+next - review api.jquery.com
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
