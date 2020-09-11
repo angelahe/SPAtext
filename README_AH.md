@@ -172,9 +172,16 @@ steps:
 will be presented to users when they are asked to connect to your app with google (only need a product name)
 8. click add credentials button and select oauth 2.0 client id
 9. select web application as app type and click create
+(set this up under aviak.ca as dream2dojs and created a clientid)
 
 next - review api.jquery.com
 
+then create an identity pool in the Cognito AWS console
+  holds a list of users, shows what credentials they used to connect
+  use the sspa script (create_pool action) based on the config directory you specify
+  ie in conf/cognito/identity_pools/learnjs/config.json
+
+  ./sspa create_pool conf/cognito/identity_pools/learnjs
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
