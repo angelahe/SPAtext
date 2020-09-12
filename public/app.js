@@ -4,7 +4,11 @@ function googleSignIn() {
   console.log(arguments);
 }
 
-var learnjs = {};
+var learnjs = {
+  poolId: 'us-east-1:7c88e48a-1fed-4356-8a44-2e9557ce1986'
+};
+
+learnjs.identity = new $.Deferred();
 
 learnjs.problems = [
   {
@@ -96,9 +100,17 @@ learnjs.landingView = function() {
   return learnjs.template('landing-view');
 }
 
+learnjs.profileView = function() {
+  var view = learnjs.template('profile-view');
+  learnjs.identity.done(function(identity) {
+    view.find('.email').text(identity.email);
+  });
+  return view;
+}
 learnjs.showView = function(hash) {
   var routes = {
     '#problem':learnjs.problemView,
+    '#profile':learnjs.profileView,
     '#':learnjs.landingView,
     '':learnjs.landingView
   };
@@ -115,4 +127,34 @@ learnjs.appOnReady = function() {
     learnjs.showView(window.location.hash);
   };
   learnjs.showView(window.location.hash);
+}
+learnjs.awsRefresh = function() {
+  var deferred = new $.Deferred();
+  AWS.config.credentials.refresh(function(err) {
+    if (err) {
+      deferred.reject(err);
+    } else {
+      deferred.resolve(AWS.config.credentials.identityId);
+    }
+  });
+  return deferred;
+}
+
+function googleSignIn(googleUser) {
+  var id_token = googleUser.getAuthResponse().id_token;
+  AWS.config.update({
+    region: 'us-east-1',
+    credentials: new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: learnjs.poolId,
+      Logins: {
+        'accounts.google.com': id_token
+      }
+    })
+  })
+  $.when(learnjs.awsRefresh()).then(function(id) {
+    learnjs.identity.resolve({
+      id: id,
+      email: googleUser.getBasicProfile().getEmail()
+    });
+  });
 }
