@@ -182,6 +182,11 @@ then create an identity pool in the Cognito AWS console
   ie in conf/cognito/identity_pools/learnjs/config.json
 
   ./sspa create_pool conf/cognito/identity_pools/learnjs
+
+  cognito uses amazon's security token service (STS) to generate temporary aws credentials for our users
+
+add button to navbar to let users connect using their google accounts
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
