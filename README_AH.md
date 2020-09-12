@@ -187,6 +187,10 @@ then create an identity pool in the Cognito AWS console
 
 add button to navbar to let users connect using their google accounts
 
+use id_token from response object in googleUser to create the cognitoIdentityCredentials object
+to test this, spy on the CognitoIdentityCredentials constructor function, return the spy object instead, and use andCallFake to delegate to a function that is passed in, which invokes the callback to turn it into a synchronous function
+
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
