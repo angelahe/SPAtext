@@ -1,3 +1,11 @@
+/***
+ * Excerpted from "Serverless Single Page Apps",
+ * published by The Pragmatic Bookshelf.
+ * Copyrights apply to this code. It may not be used to create training material,
+ * courses, books, articles, and the like. Contact us if you are in doubt.
+ * We make no guarantees that this code is fit for any purpose.
+ * Visit http://www.pragmaticprogrammer.com/titles/brapps for more book information.
+***/
 'use strict';
 
 function googleSignIn() {
@@ -137,7 +145,7 @@ learnjs.awsRefresh = function() {
       deferred.resolve(AWS.config.credentials.identityId);
     }
   });
-  return deferred;
+  return deferred.promise();
 }
 
 function googleSignIn(googleUser) {
@@ -151,10 +159,22 @@ function googleSignIn(googleUser) {
       }
     })
   })
-  $.when(learnjs.awsRefresh()).then(function(id) {
+  
+  function refresh() {
+    return gapi.auth2.getAuthInstance().signIn({
+        prompt: 'login'
+      }).then(function(userUpdate) {
+      var creds = AWS.config.credentials;
+      var newToken = userUpdate.getAuthResponse().id_token;
+      creds.params.Logins['accounts.google.com'] = newToken;
+      return learnjs.awsRefresh();
+    });
+  }
+  learnjs.awsRefresh().then(function(id) {
     learnjs.identity.resolve({
       id: id,
-      email: googleUser.getBasicProfile().getEmail()
+      email: googleUser.getBasicProfile().getEmail(),
+      refresh: refresh
     });
   });
 }
