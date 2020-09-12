@@ -25,6 +25,10 @@ IAM lockdown - add fine grained policies
 
 redirect users to help links depending on the question (do in click handler)
   using window.location.hash or checkAnswerClick handler
+
+from chapter 4 - connect with facebook (go to facebook developer portal and create a new app)
+connect with openId
+
 ## further reading
 ### intro
 http://learnjs.benrady.com
