@@ -96,6 +96,24 @@ describe('LearnJS', function(){
       identityObj = {id: 'COGNITO_ID'};
       learnjs.identity.resolve(identityObj);
     });
+    describe('saveAnswer', function() {
+      beforeEach(function() {
+        dbspy.put.and.returnValue('request');
+      });
+
+      it('writes the item to the database', function() {
+        learnjs.saveAnswer(1, {});
+        expect(learnjs.sendDbRequest).toHaveBeenCalledWith('request', jasmine.any(Function));
+        expect(dbspy.put).toHaveBeenCalledWith({
+          TableName: 'learnjs',
+          Item: {
+            userId: 'COGNITO_ID',
+            problemId: 1,
+            answer: {}
+          }
+        });
+      });
+  });
   describe('sendDbRequest', function() {
     var request, requestHandlers, promise, retrySpy;
     beforeEach(function() {
