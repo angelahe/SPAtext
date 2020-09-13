@@ -219,7 +219,8 @@ attach 2 event handlers via on method - error and success
 
 why is jasmine only showing 1 spec file result, not the other?
 
-
+==
+fetch answer, answer is saved when a user gets the right answer for the problem
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome

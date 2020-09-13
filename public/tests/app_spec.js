@@ -96,6 +96,34 @@ describe('LearnJS', function(){
       identityObj = {id: 'COGNITO_ID'};
       learnjs.identity.resolve(identityObj);
     });
+    describe('fetchAnswer', function() {
+      beforeEach(function() {
+        dbspy.get.and.returnValue('request');
+      });
+
+      it('reads the item from the database', function(done) {
+        learnjs.sendDbRequest.and.returnValue(new $.Deferred().resolve('item'));
+        learnjs.fetchAnswer(1).then(function(item) {
+          expect(item).toEqual('item');
+          expect(learnjs.sendDbRequest).toHaveBeenCalledWith('request', jasmine.any(Function));
+          expect(dbspy.get).toHaveBeenCalledWith({
+            TableName: 'learnjs',
+            Key: {
+              userId: 'COGNITO_ID',
+              problemId: 1
+            }
+          });
+          done();
+        });
+      });
+
+      it('resubmits the request on retry', function() {
+        learnjs.fetchAnswer(1, {answer: 'false'});
+        spyOn(learnjs, 'fetchAnswer').and.returnValue('promise');
+        expect(learnjs.sendDbRequest.calls.first().args[1]()).toEqual('promise');
+        expect(learnjs.fetchAnswer).toHaveBeenCalledWith(1);
+      });
+    });
     describe('saveAnswer', function() {
       beforeEach(function() {
         dbspy.put.and.returnValue('request');
@@ -113,6 +141,13 @@ describe('LearnJS', function(){
           }
         });
       });
+      it('resubmits the request on retry', function() {
+        learnjs.saveAnswer(1, {answer: 'false'});
+        spyOn(learnjs, 'saveAnswer').and.returnValue('promise');
+        expect(learnjs.sendDbRequest.calls.first().args[1]()).toEqual('promise');
+        expect(learnjs.saveAnswer).toHaveBeenCalledWith(1, {answer: 'false'});
+      });
+    });
   });
   describe('sendDbRequest', function() {
     var request, requestHandlers, promise, retrySpy;
@@ -257,9 +292,28 @@ describe('LearnJS', function(){
     });
   });
   describe('problem view', function() {
-    var view;
+    var view, fetchAnswerDef;
     beforeEach(function() {
+      fetchAnswerDef = new $.Deferred();
+      spyOn(learnjs, 'fetchAnswer').and.returnValue(fetchAnswerDef);
       view = learnjs.problemView('1');
+    });
+    it('loads the previous answer, if there is one', function(done) {
+      fetchAnswerDef.resolve({Item: {answer: 'true'}}).then(function() {
+        expect(view.find('.answer').val()).toEqual('true');
+        done();
+      });
+    });
+
+    it('keeps the answer blank until the promise is resolved', function() {
+      expect(view.find('.answer').val()).toEqual('');
+    });
+
+    it('does nothing if the question has not been answered yet', function(done) {
+      fetchAnswerDef.resolve({}).then(function() {
+        expect(view.find('.answer').val()).toEqual('');
+        done();
+      });
     });
 
     it('has a title that includes the problem number', function() {
@@ -305,8 +359,12 @@ describe('LearnJS', function(){
 
       describe('when the answer is correct', function() {
         beforeEach(function() {
+          spyOn(learnjs, 'saveAnswer');
           view.find('.answer').val('true');
           view.find('.check-btn').click();
+        });
+        it('saves the result', function() {
+          expect(learnjs.saveAnswer).toHaveBeenCalledWith(1, "true");
         });
 
         it('flashes the result', function() {

@@ -53,6 +53,21 @@ learnjs.sendDbRequest = function(req, retry) {
   req.send();
   return promise;
 }
+learnjs.fetchAnswer = function(problemId) {
+  return learnjs.identity.then(function(identity) {
+    var db = new AWS.DynamoDB.DocumentClient();
+    var item = {
+      TableName: 'learnjs',
+      Key: {
+        userId: identity.id,
+        problemId: problemId
+      }
+    };
+    return learnjs.sendDbRequest(db.get(item), function() {
+      return learnjs.fetchAnswer(problemId);
+    })
+  });
+};
 learnjs.saveAnswer = function(problemId, answer) {
   return learnjs.identity.then(function(identity) {
     var db = new AWS.DynamoDB.DocumentClient();
@@ -111,10 +126,11 @@ learnjs.problemView = function(data) {
   var view = learnjs.template('problem-view');
   var problemData = learnjs.problems[problemNumber -1];
   var resultFlash = view.find('.result');
+  var answer = view.find('.answer');
 
   function checkAnswer() {
-    var answer = view.find('.answer').val();
-    var test = problemData.code.replace('___', answer) + '; problem();';
+    
+    var test = problemData.code.replace('___', answer.val()) + '; problem();';
     return eval(test);
   }
 
@@ -122,6 +138,7 @@ learnjs.problemView = function(data) {
     if (checkAnswer()) {
       var flashContent = learnjs.buildCorrectFlash(problemNumber);
       learnjs.flashElement(resultFlash, flashContent);
+      learnjs.saveAnswer(problemNumber, answer.val());
     } else {
       learnjs.flashElement(resultFlash, 'Incorrect!');
     }
@@ -137,6 +154,11 @@ if (problemNumber < learnjs.problems.length) {
     });
   }
   
+  learnjs.fetchAnswer(problemNumber).then(function(data) {
+    if (data.Item) {
+      answer.val(data.Item.answer);
+    }
+  });
   view.find('.check-btn').click(checkAnswerClick);
   view.find('.title').text('Problem #' + problemNumber);
   
