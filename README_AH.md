@@ -194,6 +194,20 @@ add button to navbar to let users connect using their google accounts
 use id_token from response object in googleUser to create the cognitoIdentityCredentials object
 to test this, spy on the CognitoIdentityCredentials constructor function, return the spy object instead, and use andCallFake to delegate to a function that is passed in, which invokes the callback to turn it into a synchronous function
 
+## ch 5 - storig data in dynamodb
+./sspa create_table conf/dynamodb/tables/learnjs/ learnjs
+says created
+(then I modified the table_info.json but I think I botched it)
+original error:
+(base) Michaels-MacBook-Pro:SPAtext angela$ ./sspa create_table conf/dynamodb/tables/learnjs/ learnjs
+Waiting for table creation..........done!
+
+An error occurred (NoSuchEntity) when calling the PutRolePolicy operation: The role with name learnjs_cognito_authenticated cannot be found.
+
+after I tried to fix it:
+(base) Michaels-MacBook-Pro:SPAtext angela$ ./sspa create_table conf/dynamodb/tables/learnjs/ learnjs
+
+An error occurred (NoSuchEntity) when calling the PutRolePolicy operation: The role with name learnjs_cognito_authenticated cannot be found.
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
