@@ -10,9 +10,20 @@ describe('LearnJS', function(){
   beforeEach(function() {
     learnjs.identity = new $.Deferred();
   });
-  it('can show a problem view', function(){
-    learnjs.showView('#problem-1');
-    expect($('.view-container .problem-view').length).toEqual(1);
+  describe('changing views', function() {
+    beforeEach(function() {
+      fetchAnswerDef = new $.Deferred();
+      spyOn(learnjs, 'fetchAnswer').and.returnValue(fetchAnswerDef);
+    });
+    it('can show a problem view', function(){
+      learnjs.showView('#problem-1');
+      expect($('.view-container .problem-view').length).toEqual(1);
+    });
+    it('triggers removingView event when removing the view', function() {
+      spyOn(learnjs, 'triggerEvent');
+      learnjs.showView('#problem-1');
+      expect(learnjs.triggerEvent).toHaveBeenCalledWith('removingView', []);
+    });
   });
 
   it('shows the landing page view when there is no hash', function() {
@@ -26,11 +37,7 @@ describe('LearnJS', function(){
     expect(learnjs.problemView).toHaveBeenCalledWith('42');
   });
 
-it('triggers removingView event when removing the view', function() {
-    spyOn(learnjs, 'triggerEvent');
-    learnjs.showView('#problem-1');
-    expect(learnjs.triggerEvent).toHaveBeenCalledWith('removingView', []);
-  });
+
   it('invokes the router when loaded', function(){
     spyOn(learnjs, 'showView');
     learnjs.appOnReady();
@@ -80,6 +87,44 @@ it('triggers removingView event when removing the view', function() {
     learnjs.addProfileLink({email: 'foo@bar.com'});
     expect($('.signin-bar a').attr('href')).toEqual('#profile');
   });
+  describe('with DynamoDB', function() {
+    var dbspy, req, identityObj;
+    beforeEach(function() {
+      dbspy = jasmine.createSpyObj('db', ['get', 'put']);
+      spyOn(AWS.DynamoDB,'DocumentClient').and.returnValue(dbspy);
+      spyOn(learnjs, 'sendDbRequest');
+      identityObj = {id: 'COGNITO_ID'};
+      learnjs.identity.resolve(identityObj);
+    });
+  describe('sendDbRequest', function() {
+    var request, requestHandlers, promise, retrySpy;
+    beforeEach(function() {
+      requestHandlers = {};
+      request = jasmine.createSpyObj('request', ['send', 'on']);
+      request.on.and.callFake(function(eventName, callback) {
+        requestHandlers[eventName] = callback;
+      });
+      retrySpy = jasmine.createSpy('retry');
+      promise = learnjs.sendDbRequest(request, retrySpy);
+    });
+
+    it('resolves the returned promise on success', function(done) {
+      requestHandlers.success({data: 'data'});
+      expect(request.send).toHaveBeenCalled();
+      promise.then(function(data) {
+        expect(data).toEqual('data');
+        done();
+      }, fail);
+    });
+
+    it('rejects the returned promise on error', function(done) {
+      learnjs.identity.resolve({refresh: function() { return new $.Deferred().reject()}});
+      requestHandlers.error({code: "SomeError"});
+      promise.fail(function(resp) {
+        expect(resp).toEqual({code: "SomeError"});
+        done();
+      });
+    });
   describe('awsRefresh', function() {
     var callbackArg, fakeCreds;
 

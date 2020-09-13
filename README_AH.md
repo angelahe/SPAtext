@@ -209,6 +209,18 @@ after I tried to fix it:
 
 An error occurred (NoSuchEntity) when calling the PutRolePolicy operation: The role with name learnjs_cognito_authenticated cannot be found.
 
+
+==
+when user enters correct answer, we're going to save it
+
+sendDbRequrest 
+- create new deberred object so you can chain this with other async requests
+attach 2 event handlers via on method - error and success
+
+why is jasmine only showing 1 spec file result, not the other?
+
+
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
