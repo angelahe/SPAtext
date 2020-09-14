@@ -178,6 +178,12 @@ describe('LearnJS', function(){
         done();
       });
     });
+    it('refreshes the credentials and retries when the credentials are expired', function() {
+      learnjs.identity.resolve({refresh: function() { return new $.Deferred().resolve()}});
+      requestHandlers.error({code: "CredentialsError"});
+      expect(retrySpy).toHaveBeenCalled();
+    });
+  });
   describe('awsRefresh', function() {
     var callbackArg, fakeCreds;
 
