@@ -217,10 +217,12 @@ sendDbRequrest
 - create new deberred object so you can chain this with other async requests
 attach 2 event handlers via on method - error and success
 
-why is jasmine only showing 1 spec file result, not the other?
-
 ==
 fetch answer, answer is saved when a user gets the right answer for the problem
+
+==
+next add IAM policy so user can look at others answers
+
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
@@ -301,6 +303,7 @@ account 040939238419:user/avhenders
 
 ultimate solution: had to make my permissions on my bucket public (vs the private default when creating the bucket)
 
+sign in as root user (angela@aviak.ca)
 
 ## notes and quotes
 your first and most important challenge is to figure out what the market wants to buy and what it's willing to pay.  product/market fit, is key to building a successful product or service
