@@ -227,6 +227,36 @@ AmazonCognitoDeveloperAuthenticatedIdentities
 but not sure what to do with it after that
 come back to learnjs/5500/policy/table_policy_condition.json
 
+additional reading:
+jquery 3 and promise/A+ deferred
+policy simulator
+allowing s3 access - images, sounds, video best stored in services meant to store large media objects
+
+## ch 6
+building microservices with lambda
+e.g. enforcing data constraints that can't be specified in an access policy
+using amazon lambda service can create web services that run in dedicated containers that only cost when they are handling requests
+(don't need web servers for this)
+- other examples:
+- filter query results before send them back to the browser
+- enable 3rd party access to app
+- cache data 
+- create lambda to provide the most common answer provided by our users to one of the programming puzzles, securely, without compromising access to other user data, and also reduces the amount of data sent to browser
+- define service using AWS command line
+then 2 methods for invoking the service - authenticated method using credentials, and one that is public method using http
+
+steps:
+javascript function that takes 2 arguments
+  first arg = payload (json) as a parsed javascript object
+  2nd arg - context - to interact with the lambda environment, including methods to respond to the request or fail with an error
+package the function and its dependencies in a zip file
+choose a name and settings like resource limits
+upload the zip that contains the function to AWS
+
+note on Node.js
+javascript runtime based on v8
+uses event driven model to prevent blocking on I/O and other long running operations
+(could also use Java and Python lambda functions)
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
@@ -442,3 +472,12 @@ Synchronous XMLHttpRequest on the main thread is deprecated because of its detri
 title includes problem # test - does not pass as written, even though it returns the matching string
 
 invokes router when loaded - does not pass, does not even run
+
+# ch 5 
+learnjs new folder created, deleted it
+google auth doesn't seem to work in cloud
+locally, says it is signed in, but your profile is empty
+expected: should have email address and name at a minimum displayed
+in cloud - google icon does not change to signed in
+all tests (in cloud) run as passed
+all tests (locally) run as passed
