@@ -222,6 +222,10 @@ fetch answer, answer is saved when a user gets the right answer for the problem
 
 ==
 next add IAM policy so user can look at others answers
+added a group to IAM - authgroup that has this policy
+AmazonCognitoDeveloperAuthenticatedIdentities
+but not sure what to do with it after that
+come back to learnjs/5500/policy/table_policy_condition.json
 
 
 ## tips and recommendations
