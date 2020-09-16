@@ -8,6 +8,7 @@ dist
 # original src
 code/learnjs/*.*
 code/learnjs
+learnjs/*
 
 node_modules/*
 code/*
