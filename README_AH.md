@@ -29,6 +29,8 @@ redirect users to help links depending on the question (do in click handler)
 from chapter 4 - connect with facebook (go to facebook developer portal and create a new app)
 connect with openId
 
+from ch 6 - move each lambda function handler out into its own file (all in index.js)
+
 ## further reading
 ### intro
 http://learnjs.benrady.com
@@ -258,6 +260,24 @@ javascript runtime based on v8
 uses event driven model to prevent blocking on I/O and other long running operations
 (could also use Java and Python lambda functions)
 
+note on lambdas:
+don't necessarily exit when function returns
+use context to respond or fail
+async tasks may not complete by time the function returns - want to avoid!
+invoke callback to finish the request
+useful actions:
+- write to filesystem (512MB) at /tmp, but only when fn is running (not persisted)
+- run linux commands from function (shell) so can use node.js libraries with native extensions
+limits:
+-number of processes can spawn, number of file descriptors have open
+-number of concurrent invocations of function (default 100)
+-300 sections for execution
+memory, time, cost:
+pay by gigabyte second, longer and more memory = pay more
+
+deploy lambda fn:
+use AWS CLI lambda create-function
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
@@ -481,3 +501,6 @@ expected: should have email address and name at a minimum displayed
 in cloud - google icon does not change to signed in
 all tests (in cloud) run as passed
 all tests (locally) run as passed
+
+# ch 6
+the conf/iam/roles is empty, but text says was created eariler in the book, have to do from command line.  need to debug what is wrong here before proceeding.
