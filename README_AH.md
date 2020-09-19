@@ -504,3 +504,8 @@ all tests (locally) run as passed
 
 # ch 6
 the conf/iam/roles is empty, but text says was created eariler in the book, have to do from command line.  need to debug what is wrong here before proceeding.
+
+## future plans
+have a true function evaluator, see hackerrank for an idea of how
+add ability to create test cases with the functionality, and have the tests evaluate properly too
+add ability to see previous answers
