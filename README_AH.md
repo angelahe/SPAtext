@@ -278,6 +278,8 @@ pay by gigabyte second, longer and more memory = pay more
 deploy lambda fn:
 use AWS CLI lambda create-function
 
+
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
@@ -510,4 +512,4 @@ have a true function evaluator, see hackerrank for an idea of how
 add ability to create test cases with the functionality, and have the tests evaluate properly too
 add ability to see previous answers
 
-did research into gradients and more ideas around cards and making visuals and making it creative
+did research into gradients and more ideas around cards and making visuals and making it creative 
