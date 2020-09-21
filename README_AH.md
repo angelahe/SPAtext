@@ -509,3 +509,5 @@ the conf/iam/roles is empty, but text says was created eariler in the book, have
 have a true function evaluator, see hackerrank for an idea of how
 add ability to create test cases with the functionality, and have the tests evaluate properly too
 add ability to see previous answers
+
+did research into gradients and more ideas around cards and making visuals and making it creative
