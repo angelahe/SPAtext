@@ -283,7 +283,14 @@ use AWS CLI lambda create-function
 ./sspa create_service conf/lambda/functions/echo
 ```
 
+create copy of echo folder for popularAnswers then 
+```
+./sspa create_service conf/lambda/functions/popularAnswers
+```
 
+```
+aws --profile admin iam list-policies
+```
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
