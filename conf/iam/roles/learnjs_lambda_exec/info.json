@@ -1,22 +1,22 @@
 {
-  "Role": {
-      "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-              {
-                  "Action": "sts:AssumeRole",
-                  "Principal": {
-                      "Service": "lambda.amazonaws.com"
-                  },
-                  "Effect": "Allow",
-                  "Sid": ""
-              }
-          ]
-      },
-      "RoleId": "AROAJ67KFEW5PCLEK3X2S",
-      "CreateDate": "2015-12-17T18:27:47.499Z",
-      "RoleName": "learnjs_lambda_exec",
-      "Path": "/",
-      "Arn": "arn:aws:iam::730171000947:role/learnjs_lambda_exec"
-  }
+    "Role": {
+        "Path": "/",
+        "RoleName": "learnjs_lambda_exec",
+        "RoleId": "AROAQTCBLGQJRWBVFHVBW",
+        "Arn": "arn:aws:iam::040939238419:role/learnjs_lambda_exec",
+        "CreateDate": "2020-09-21T12:57:24Z",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "",
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "lambda.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        }
+    }
 }

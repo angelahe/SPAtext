@@ -278,7 +278,10 @@ pay by gigabyte second, longer and more memory = pay more
 deploy lambda fn:
 use AWS CLI lambda create-function
 
-
+```
+./sspa build_bundle
+./sspa create_service conf/lambda/functions/echo
+```
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
