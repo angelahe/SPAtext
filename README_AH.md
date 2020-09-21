@@ -283,6 +283,8 @@ use AWS CLI lambda create-function
 ./sspa create_service conf/lambda/functions/echo
 ```
 
+
+
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
   or livereload (standalone web server and protocol that is used to reload web apps automatically during dev.  whenever server detects a file has changed, communicates the change to the js lib or browser plugin in the client)
@@ -508,7 +510,10 @@ all tests (in cloud) run as passed
 all tests (locally) run as passed
 
 # ch 6
-the conf/iam/roles is empty, but text says was created eariler in the book, have to do from command line.  need to debug what is wrong here before proceeding.
+test functions through aws console
+not sure, check this out:
+https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html
+not sure where is the settings page for the lambda function, and don't see test icon or actions icon text refers to...
 
 ## future plans
 have a true function evaluator, see hackerrank for an idea of how
