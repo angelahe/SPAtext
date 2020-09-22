@@ -290,7 +290,13 @@ create copy of echo folder for popularAnswers then
 
 ```
 aws --profile admin iam list-policies
+
+​​aws​​ ​​--profile​​ ​​admin​​ ​​iam​​ ​​attach-role-policy​​ \ ​​--role-name​​ ​​learnjs_lambda_exec​​ ​​\​
+​​​--policy-arn​​ ​​arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
 ```
+
+testing in headless environment:
+./sspa test
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
