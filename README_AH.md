@@ -296,7 +296,13 @@ aws --profile admin iam list-policies
 ```
 
 testing in headless environment:
+```
 ./sspa test
+```
+
+```
+./sspa deploy_bundle
+```
 
 ## tips and recommendations
   consider using an automated page-reloading tool as you work e.g. livepage plugin for google chrome
@@ -527,6 +533,12 @@ test functions through aws console
 not sure, check this out:
 https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html
 not sure where is the settings page for the lambda function, and don't see test icon or actions icon text refers to...
+
+got an error when do .\sspa deploy_bundle - ResourceNotFoundException
+
+An error occurred (ResourceNotFoundException) when calling the UpdateFunctionCode operation: Function not found: arn:aws:lambda:us-east-1:040939238419:function:echo
+
+An error occurred (ResourceNotFoundException) when calling the UpdateFunctionCode operation: Function not found: arn:aws:lambda:us-east-1:040939238419:function:popularAnswers
 
 ## future plans
 have a true function evaluator, see hackerrank for an idea of how
