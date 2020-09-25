@@ -546,3 +546,5 @@ add ability to create test cases with the functionality, and have the tests eval
 add ability to see previous answers
 
 did research into gradients and more ideas around cards and making visuals and making it creative 
+
+need to find an article or training on aws to write lambda functions
